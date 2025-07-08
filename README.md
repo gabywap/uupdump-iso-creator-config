@@ -1,6 +1,8 @@
 
 # uupdump-iso-creator-config
-uupdump-iso-creator-config
+
+
+
 =======
 ﻿# uupdump-iso-creator-config
 
@@ -566,27 +568,64 @@ A Rufus használata egyszerű és gyors megoldás az ISO lemezképek USB-re ír�
 
 ---
 
-Ha az általunk készített konfigurációs ISO-t írod fel, **ne pipáld be a Rufusban az extra opciókat**, mert a konfigurációnk már tartalmazza a szükséges beállításokat.
+# 📦 uupdump-iso-creator-config
 
-Az USB meghajtót az ISO automatikusan **NTFS fájlrendszerre** formázza, és az **UEFI módban** való indítást támogatja.
+![GitHub license](https://img.shields.io/github/license/gabywap/uupdump-iso-creator-config)
+![GitHub last commit](https://img.shields.io/github/last-commit/gabywap/uupdump-iso-creator-config)
+![GitHub repo size](https://img.shields.io/github/repo-size/gabywap/uupdump-iso-creator-config)
 
 ---
 
-## USB boot pendrive készítése Rufus Portable segítségével
+## 📋 Tartalomjegyzék
+
+- [Bemutatkozás](#-bemutatkozás)
+- [Telepítés és használat](#-telepítés-és-használat)
+- [USB boot pendrive készítése Rufus Portable segítségével](#-usb-boot-pendrive-készítése-rufus-portable-segítségével)
+- [Konfigurációk](#-konfigurációk)
+- [Hasznos linkek](#-hasznos-linkek)
+- [Hibaelhárítás](#-hibaelhárítás)
+
+---
+
+## 📖 Bemutatkozás
+
+Ez a repository segít automatizálni és testreszabni Windows ISO-k készítését az **uupdump.net** oldalról letöltött frissítőcsomagokból. A konfigurációk lehetővé teszik, hogy a legfontosabb beállítások és alkalmazások előre integrálva legyenek a telepítőben.
+
+---
+
+## 🚀 Telepítés és használat
+
+1. Töltsd le az általunk készített ZIP csomagot az **uupdump.net** oldalról a kívánt buildhez (például: `26200.5670_amd64_hu-hu_professional_adf22284_convert.zip`).  
+2. Csomagold ki bőséges tárhelyre a ZIP-et.  
+3. Szerkeszd vagy cseréld le a konfigurációs fájlokat (`ConvertConfig.ini`, `CustomAppsList.txt`) a saját igényeid szerint.  
+4. Futtasd rendszergazdaként a `uup_download_windows.cmd` fájlt.  
+5. Várj türelemmel: a build elkészítése erőforrás- és időigényes, akár több órát is igénybe vehet.  
+6. A kész ISO fájl a build nevével kerül létrehozásra, például:  
+   `26200.5670.250619-1641.GE_PRERELEASE_IM_CLIENTPRO_OEMRET_X64FRE_HU-HU.ISO`
+
+---
+
+## 💾 USB boot pendrive készítése Rufus Portable segítségével
+
+Ha az általunk készített konfigurációs ISO-t írod fel, **ne pipáld be a Rufusban az extra opciókat**, mert a konfigurációnk már tartalmazza a szükséges beállításokat.
+
+Az USB meghajtót az ISO automatikusan **NTFS fájlrendszerre** formázza, és az **UEFI módban** való indítást támogatja.
 
 Használhatod a Rufus portable változatát is, például a [rufus-4.9p.exe](https://github.com/pbatard/rufus/releases/download/v4.9/rufus-4.9p.exe) fájlt, amely nem igényel telepítést.
 
 ![Rufus képernyőkép](https://rufus.ie/pics/screenshot1_hu.png)
 
-Az elkészített ISO-t így ugyanúgy egyszerűen felírhatod USB-re. A Rufus automatikusan NTFS-re formázza az USB-t, UEFI boot támogatással.
+Az elkészített ISO-t így ugyanúgy egyszerűen felírhatod USB-re.
+
+A Rufus automatikusan NTFS-re formázza az USB-t, UEFI boot támogatással.
 
 Ne jelölj be plusz opciókat, mert a konfigurációnk már tartalmaz mindent, amit szükséges.
 
 ---
 
-## FAT32 használata esetén
+### FAT32 fájlrendszer használata esetén
 
-Ha FAT32 fájlrendszert szeretnél használni (például régebbi gépekhez vagy BIOS kompatibilitás miatt), akkor előtte törölnöd kell az USB meghajtó tartalmát egy alaposabb eszközzel, például:
+Ha FAT32 fájlrendszert szeretnél használni (pl. régebbi gépekhez vagy BIOS-kompatibilitás miatt), akkor előtte törölnöd kell az USB meghajtó tartalmát egy alaposabb eszközzel, például:
 
 **KillDisk Freeware**  
 [https://www.killdisk.com/killdisk-freeware.htm](https://www.killdisk.com/killdisk-freeware.htm)
@@ -595,6 +634,35 @@ Ez segít teljesen tisztára törölni az USB-t, mielőtt FAT32-re formázod Ruf
 
 ---
 
-_Readme folytatása hamarosan..._
+## ⚙️ Konfigurációk
 
+A konfigurációs fájlokkal beállíthatod, hogy milyen frissítések, komponensek, .NET Framework verziók, illesztőprogramok és Microsoft Store alkalmazások kerüljenek bele az ISO-ba.
+
+Példák:
+
+- `ConvertConfig.ini`: automatizálja az ISO készítés menetét, engedélyezi a frissítések integrálását, .NET 3.5 telepítését, Edge eltávolítását, stb.  
+- `CustomAppsList.txt`: testreszabhatod, mely Microsoft Store alkalmazások kerüljenek fel a rendszerre (pl. Windows Store, Kalkulátor, Sticky Notes).
+
+---
+
+## 🔧 Hibaelhárítás
+
+- Ha a `git push` nem sikerül, győződj meg róla, hogy a helyi branch naprakész a távoli branch-csel (`git pull --rebase origin main`).  
+- A konfigurációs fájlok elhelyezésekor figyelj arra, hogy ne legyenek felesleges mappaszintek a repó gyökerén kívül.  
+- A telepítés során esetlegesen felmerülő hibák esetén ellenőrizd a log fájlokat a futtató mappában.
+
+---
+
+## 📚 Hasznos linkek
+
+- [uupdump.net](https://uupdump.net) – Windows ISO és frissítések letöltő oldala  
+- [Rufus](https://rufus.ie/) – USB boot pendrive készítő eszköz  
+- [KillDisk Freeware](https://www.killdisk.com/killdisk-freeware.htm) – USB teljes törlésére  
+- [uupdump-iso-creator GitHub](https://github.com/gabywap/uupdump-iso-creator-config) – Ez a repó
+
+---
+
+*README folytatása hamarosan...*
+
+---
 
