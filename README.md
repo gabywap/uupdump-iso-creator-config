@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # uupdump-iso-creator-config
 uupdump-iso-creator-config
 =======
@@ -539,8 +539,23 @@ configs/
     └── CustomAppsList_minta_magyarul.md
 
 
+A letöltött ZIP csomag kibontása és az ISO elkészítése
+Győződj meg róla, hogy elegendő szabad hely van a meghajtódon, mert a letöltött ZIP fájl és az ISO elkészítése jelentős tárhelyet igényelhet.
 
+Csomagold ki a letöltött ZIP fájlt, amely tartalmazza a konfigurációs fájlokat, például:
 
+CustomAppsList.txt
 
+ConvertConfig.ini
 
->>>>>>> d6be641 (Initial commit)
+Ezeket a konfigurációs fájlokat igény szerint szerkesztheted, vagy felülírhatod a korábban elkészített, személyre szabott változatokkal.
+
+Futtasd rendszergazdaként a uup_download_windows.cmd fájlt a mappában.
+
+Ha a parancssor kér valamit, írj be R betűt és nyomj Entert a folytatáshoz.
+
+Az ISO elkészítése a géped teljesítményétől függően akár több órát is igénybe vehet.
+
+A kész ISO fájl neve hasonló lesz az alábbihoz:
+26200.5670.250619-1641.GE_PRERELEASE_IM_CLIENTPRO_OEMRET_X64FRE_HU-HU.ISO
+
