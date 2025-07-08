@@ -1,4 +1,4 @@
-
+﻿
 # uupdump-iso-creator-config
 
 
@@ -20,7 +20,7 @@ Az eszköz főbb jellemzői:
 - Legfrissebb frissítések beépítése  
 - Egyszerű és automatizálható ISO készítés
 
----
+--- 
 
 ## Fontos dokumentáció és GYIK
 

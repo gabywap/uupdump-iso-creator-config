@@ -2,7 +2,7 @@
 ### Csak a 22563-as build és annál újabb verziókban működik!
 ### A ConvertConfig.ini fájlban a következő beállításnak engedélyezettnek kell lennie:
 ### CustomList = 1
-
+ 
 ### Ahol nincs # jel, az alkalmazás belekerül az ISO-ba
 ### Ahol van #, az ki van kapcsolva
 
