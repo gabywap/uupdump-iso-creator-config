@@ -559,6 +559,8 @@ Az ISO elkészítése a géped teljesítményétől függően akár több órát
 A kész ISO fájl neve hasonló lesz az alábbihoz:
 26200.5670.250619-1641.GE_PRERELEASE_IM_CLIENTPRO_OEMRET_X64FRE_HU-HU.ISO
 
+
+
 USB boot pendrive készítése Rufus segítségével
 A Rufus használata egyszerű és gyors megoldás az ISO lemezképek USB-re írásához.
 
@@ -568,7 +570,23 @@ Ha az általunk készített konfigurációs ISO-t írod fel, **ne pipáld be a R
 
 Az USB meghajtót az ISO automatikusan **NTFS fájlrendszerre** formázza, és az **UEFI módban** való indítást támogatja.
 
-Ha FAT32 fájlrendszert szeretnél használni (pl. bizonyos régebbi gépekhez vagy BIOS-hoz kompatibilitás miatt), akkor előtte törölnöd kell az USB meghajtó tartalmát egy alaposabb eszközzel, például:
+---
+
+## USB boot pendrive készítése Rufus Portable segítségével
+
+Használhatod a Rufus portable változatát is, például a [rufus-4.9p.exe](https://github.com/pbatard/rufus/releases/download/v4.9/rufus-4.9p.exe) fájlt, amely nem igényel telepítést.
+
+![Rufus képernyőkép](https://rufus.ie/pics/screenshot1_hu.png)
+
+Az elkészített ISO-t így ugyanúgy egyszerűen felírhatod USB-re. A Rufus automatikusan NTFS-re formázza az USB-t, UEFI boot támogatással.
+
+Ne jelölj be plusz opciókat, mert a konfigurációnk már tartalmaz mindent, amit szükséges.
+
+---
+
+## FAT32 használata esetén
+
+Ha FAT32 fájlrendszert szeretnél használni (például régebbi gépekhez vagy BIOS kompatibilitás miatt), akkor előtte törölnöd kell az USB meghajtó tartalmát egy alaposabb eszközzel, például:
 
 **KillDisk Freeware**  
 [https://www.killdisk.com/killdisk-freeware.htm](https://www.killdisk.com/killdisk-freeware.htm)
@@ -578,3 +596,5 @@ Ez segít teljesen tisztára törölni az USB-t, mielőtt FAT32-re formázod Ruf
 ---
 
 _Readme folytatása hamarosan..._
+
+
