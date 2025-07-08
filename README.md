@@ -187,46 +187,120 @@ call uup_download_windows.cmd
 | 26200.5670        | amd64 | hu-HU | Professional | [`configs/26200.5670_amd64_hu-hu_professional_adf22284.json`](configs/26200.5670_amd64_hu-hu_professional_adf22284.json)
 
 
-Magyarázatos változat: ConvertConfig_minta_magyarul.ini
+📝 ConvertConfig_minta_magyarul.ini – magyar magyarázatos minta
 
 [convert-UUP]
-AutoStart    =1        ; Automatikusan elindítja a konvertálási folyamatot a script futtatásakor
-AddUpdates   =1        ; Beépíti a letöltött frissítéseket a telepítőbe
-Cleanup      =1        ; Komponens-tisztítás (DISM /cleanup-image) a telepítőméret csökkentéséhez
-ResetBase    =0        ; Nem reseteli a frissítési alapot (meghagyja a frissítési előzményeket)
-NetFx3       =1        ; .NET Framework 3.5 beépítése (gyakori kérés sok szoftverhez)
-StartVirtual =0        ; Ne induljon el virtuális kiadások konvertálása automatikusan
-wim2esd      =0        ; Nem konvertálja WIM fájlokat tömörített ESD-re (kevésbé tömör, de gyorsabb)
-wim2swm      =0        ; Nem darabolja fel a WIM fájlokat (Split-WIM)
-SkipISO      =0        ; Nem hagyjuk ki az ISO készítést (ISO fog keletkezni)
-SkipWinRE    =0        ; A Windows Recovery Environment (WinRE) ne kerüljön kihagyásra
-LCUwinre     =0        ; Nem integrálja az LCU-t a WinRE-be
-LCUmsuExpand =0        ; Nem bontja ki manuálisan az MSU-t az LCU-hoz
-UpdtBootFiles=0        ; Nem frissíti a boot fájlokat külön (pl. boot.wim, setup boot)
-ForceDism    =0        ; Nem kényszeríti a DISM használatát (alapértelmezett eszközhasználat)
-RefESD       =0        ; Nem használ meglévő ESD-t referenciaként
-SkipLCUmsu   =0        ; Nem hagyjuk ki az LCU MSU használatát
-SkipEdge     =1        ; Microsoft Edge eltávolítása az ISO-ból (ha lehetséges)
-AutoExit     =0        ; Nem lép ki automatikusan a végén, konzolablak nyitva marad
-DisableUpdatingUpgrade=0 ; Frissítési csatorna ne legyen tiltva a telepítőben
-AddDrivers   =0        ; Nem integrálunk illesztőprogramokat
-Drv_Source   =\Drivers ; (használaton kívül, mivel AddDrivers=0)
+; 🔁 Automatikus konvertálás induljon a script elindításakor
+AutoStart    =1
+
+; ⬇️ Frissítések letöltése és integrálása a telepítőbe
+AddUpdates   =1
+
+; 🧹 Komponens-takarítás a rendszerképben (DISM Cleanup)
+Cleanup      =1
+
+; 🧼 Alapverzió visszaállítása (nem ajánlott, adatvesztést okozhat)
+ResetBase    =0
+
+; 🧱 .NET Framework 3.5 integrálása
+NetFx3       =1
+
+; 💻 Virtuális gépen történő konvertálás engedélyezése (nem szükséges)
+StartVirtual =0
+
+; 💾 WIM → ESD átalakítás (kisebb ISO, de veszteséges tömörítés)
+wim2esd      =0
+
+; 🧩 WIM → SWM feldarabolás több fájlra (FAT32 USB-hez, ha >4GB)
+wim2swm      =0
+
+; 📦 Ne hozzon létre ISO-t (ha csak mappát szeretnél)
+SkipISO      =0
+
+; 🛠 WinRE (helyreállító környezet) kihagyása
+SkipWinRE    =0
+
+; 🩹 WinRE-hez külön frissítés integrálása (speciális)
+LCUwinre     =0
+
+; 📁 MSU fájlok kibontása a frissítésekhez (haladó)
+LCUmsuExpand =0
+
+; 🥾 Bootfájlok frissítése (általában nem szükséges)
+UpdtBootFiles=0
+
+; 🔧 DISM kényszerített használata (hibák megoldására)
+ForceDism    =0
+
+; 📦 Referencia ESD használata (haladó)
+RefESD       =0
+
+; 🛑 LCU (legutóbbi kumulatív frissítés) kihagyása
+SkipLCUmsu   =0
+
+; ❌ Microsoft Edge eltávolítása
+SkipEdge     =1
+
+; 🏁 Script automatikus bezárása a végén
+AutoExit     =0
+
+; 🚫 Ne frissítse az upgrade-telepítéseket
+DisableUpdatingUpgrade=0
+
+; 🧰 Illesztőprogramok integrálása (ha van Drivers mappa)
+AddDrivers   =0
+
+; 📁 Illesztőprogram mappa elérési útja
+Drv_Source   =\Drivers
+
 
 [Store_Apps]
-SkipApps     =0        ; Nem hagyjuk ki a Store alkalmazásokat
-AppsLevel    =0        ; Alap szintű Store app integráció
-StubAppsFull =0        ; Ne telepítse a teljes Stub appokat (alapértelmezett viselkedés)
-CustomList   =1        ; Egyéni app lista használata engedélyezve
+; 🛍️ Microsoft Store appok kihagyása (0 = engedélyezve)
+SkipApps     =0
+
+; 📱 Appok szintje (0 = teljes, 1 = minimal, 2 = csak kritikus)
+AppsLevel    =0
+
+; 📦 Stub alkalmazások teljes verzióinak telepítése
+StubAppsFull =0
+
+; 📜 Egyedi Store App lista használata (pl. CustomAppsList.txt)
+CustomList   =1
+
 
 [create_virtual_editions]
-vUseDism     =1        ; DISM használata a virtuális kiadások létrehozásához
-vAutoStart   =1        ; Automatikus indulás virtuális kiadások létrehozásához
-vDeleteSource=0        ; Ne törölje a forrás WIM/ESD fájlokat a konverzió után
-vPreserve    =0        ; Ne tartsa meg a köztes fájlokat (tisztább build)
-vwim2esd     =0        ; Virtuális kiadásokhoz ne konvertáljon ESD-re
-vwim2swm     =0        ; Virtuális kiadásokhoz ne készítsen split WIM-et
-vSkipISO     =0        ; Virtuális kiadásokhoz is készüljön ISO
-vAutoEditions=         ; (Üres - nincs automatikus kiadáslista megadva)
+; 🧪 DISM használata virtuális kiadások létrehozásához
+vUseDism     =1
+
+; 🔁 Virtuális kiadások automatikus generálása
+vAutoStart   =1
+
+; 🧹 Forrás fájlok törlése a végén
+vDeleteSource=0
+
+; 🧷 Eredeti fájlok megtartása
+vPreserve    =0
+
+; 💾 WIM → ESD átalakítás a virtuális verzióknál
+vwim2esd     =0
+
+; 💾 WIM → SWM szétvágás a virtuális verzióknál
+vwim2swm     =0
+
+; 📦 ISO kihagyása a virtuális kiadásoknál
+vSkipISO     =0
+
+; ➕ Kiadások automatikus hozzáadása (pl. Education, Enterprise)
+vAutoEditions=
+
+### 🧩 ConvertConfig_minta_magyarul.ini
+
+Ez egy teljes, részletes magyar magyarázattal ellátott konfigurációs fájlminta, amit a `UUP → ISO` konverzió során használhatsz.
+
+📁 Elérési út: `configs/ConvertConfig_minta_magyarul.ini`  
+💡 Segítséget nyújt a saját `ConvertConfig.ini` fájlod kialakításához.
+
+👉 Tipp: A fájl soronként elmagyarázza, mit csinál az adott kapcsoló, így könnyen testre szabhatod.
 
 
 
